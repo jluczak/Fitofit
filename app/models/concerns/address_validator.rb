@@ -1,16 +1,12 @@
 # frozen_string_literal: true
 
-class AddressValidator < ActiveModel::Validator
-  def validate(record)
-    if invalid_address?(record.start_point)
-      record.errors.add(:start_point, 'invalid address')
-    end
-    if invalid_address?(record.end_point)
-      record.errors.add(:end_point, 'invalid address')
-    end
+class AddressValidator < ActiveModel::EachValidator
+  def validate_each(record, attribute, value)
+    record.errors.add(attribute, 'invalid address') if invalid_address?(value)
     if same_address?(record.start_point, record.end_point)
-      record.errors.add(:start_point, 'same start point and end point')
-      record.errors.add(:end_point, 'same start point and end point')
+      message = 'same start point and end point'
+      record.errors.add(:start_point, message)
+      record.errors.add(:end_point, message)
     end
   end
 
