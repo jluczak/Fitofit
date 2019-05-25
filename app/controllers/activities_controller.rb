@@ -16,6 +16,8 @@ class ActivitiesController < ApplicationController
   end
 
   def show
+    @last_distance = current_user.activities.last.distance
+    @weekly_distance = current_user.activities.where('created_at > ?', 7.days.ago).sum(:distance)
   end
 
   private
