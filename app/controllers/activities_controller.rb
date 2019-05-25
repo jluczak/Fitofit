@@ -18,15 +18,14 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    last_activity = current_user.activities.last
-    @last_distance = last_activity ? last_activity.distance : 0.00
+    @activity = Activity.find_by(id: params[:id])
     @weekly_distance = current_user.activities.where('created_at > ?', 7.days.ago).sum(:distance)
   end
 
   private
     def calculate_distance
-      start_point_coordinates = Geocoder.coordinates(activity_params[:start_point])
-      end_point_coordinates = Geocoder.coordinates(activity_params[:end_point])
+      start_point_coordinates = Geocoder.coordinates(params[:start_point])
+      end_point_coordinates = Geocoder.coordinates(params[:end_point])
       (Geocoder::Calculations.distance_between(start_point_coordinates, end_point_coordinates, :units => :km)).round(2)
     end
 
