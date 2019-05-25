@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="logo">
+    <%= link_to new_activity_path do %>
+    <%= image_tag('feet.png')%>
+    <% end %>
+  </div>
+  <div class="nav">
+    <ul>
+      <% if user_signed_in? %>
+        <li class="item">
+          <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
+        </li>
+      <% else %>
+        <li class="item">
+          <%= link_to 'Log In', new_user_session_path %>
+        </li>
+        <li class="item">
+          <%= link_to 'Register', new_user_registration_path %> <br>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
