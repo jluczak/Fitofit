@@ -6,7 +6,7 @@ class AddressValidator < ActiveModel::Validator
     if invalid_address?(record.end_point)
       record.errors.add(:end_point, :invalid, message: 'invalid address')
     end
-    if record.distance <= 0
+    if record.start_point == record.end_point
       record.errors.add(:start_point, :invalid, message: 'same start point and end point')
       record.errors.add(:end_point, :invalid, message: 'same start point and end point')
     end

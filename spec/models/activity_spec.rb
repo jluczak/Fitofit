@@ -18,7 +18,7 @@ RSpec.describe Activity, type: :model do
     it { expect(subject).to validate_presence_of(:start_point) }
     it { expect(subject).to validate_presence_of(:end_point) }
     it { expect(subject).to validate_presence_of(:distance) }
-    it { expect(subject).to validate_numericality_of(:distance).only_float }
+    it { expect(subject).to validate_numericality_of(:distance).is_greater_than(0) }
   end
 
   describe 'relations' do

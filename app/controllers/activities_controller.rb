@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   before_action :authenticate_user!
-  
+
   def new
     @activity = Activity.new
   end
@@ -18,7 +18,8 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    @last_distance = current_user.activities.last.distance
+    last_activity = current_user.activities.last
+    @last_distance = last_activity ? last_activity.distance : 0.00
     @weekly_distance = current_user.activities.where('created_at > ?', 7.days.ago).sum(:distance)
   end
 
@@ -30,6 +31,6 @@ class ActivitiesController < ApplicationController
     end
 
     def activity_params
-      params.require(:activity).permit(:start_point, :end_point)
+      params.permit(:start_point, :end_point)
     end
 end
