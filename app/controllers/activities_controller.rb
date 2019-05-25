@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ActivitiesController < ApplicationController
   before_action :authenticate_user!
 
@@ -8,9 +10,9 @@ class ActivitiesController < ApplicationController
   def create
     @activity = Activity.new(activity_params)
     @activity.user = current_user
-    @activity.distance = calculate_distance()
+    @activity.distance = calculate_distance
     if @activity.save
-      flash[:success] = "You have just added a new activity!"
+      flash[:success] = 'You have just added a new activity!'
       redirect_to @activity
     else
       render 'new'
@@ -23,13 +25,14 @@ class ActivitiesController < ApplicationController
   end
 
   private
-    def calculate_distance
-      start_point_coordinates = Geocoder.coordinates(params[:start_point])
-      end_point_coordinates = Geocoder.coordinates(params[:end_point])
-      (Geocoder::Calculations.distance_between(start_point_coordinates, end_point_coordinates, :units => :km)).round(2)
-    end
 
-    def activity_params
-      params.permit(:start_point, :end_point)
-    end
+  def calculate_distance
+    start_point_coordinates = Geocoder.coordinates(params[:start_point])
+    end_point_coordinates = Geocoder.coordinates(params[:end_point])
+    Geocoder::Calculations.distance_between(start_point_coordinates, end_point_coordinates, units: :km).round(2)
+  end
+
+  def activity_params
+    params.permit(:start_point, :end_point)
+  end
 end

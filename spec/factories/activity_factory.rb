@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :activity, class: Activity do
     start_point { 'Plac Europejski 2, Warszawa, Polska' }
