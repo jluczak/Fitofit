@@ -30,10 +30,10 @@ RSpec.describe ActivitiesController, type: :controller do
 
   describe 'GET #create' do
     let(:action) do
-      post :create, params: {
+      post :create, params: { activity: {
         start_point: 'Plac Europejski 2, Warszawa, Polska',
         end_point: 'Andersa 2, Warszawa, Polska'
-      }
+      } }
     end
     context 'with valid attributes' do
       it 'create new activity' do
@@ -48,10 +48,10 @@ RSpec.describe ActivitiesController, type: :controller do
 
     context 'with invalid attributes' do
       let(:action) do
-        post :create, params: {
+        post :create, params: { activity: {
           start_point: 'aaaaa, Warszawa, Polska',
           end_point: 'bbbbb, Warszawa, Polska'
-        }
+        } }
       end
       it "doesn't create a new activity" do
         expect { action }.to_not change { Activity.count }
