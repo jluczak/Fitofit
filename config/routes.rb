@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'activities/new'
-  get 'activities/create'
-  get 'activities/show'
+  root to: "activities#new"
+  resources :activities, only: %i[new create show]
   devise_for :users
 end
