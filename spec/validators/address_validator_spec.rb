@@ -50,7 +50,7 @@ end
 
 class Validatable
   include ActiveModel::Validations
-  validates_with AddressValidator
+  validates_with AddressValidator, attributes: %i[start_point end_point]
   attr_accessor :start_point, :end_point
 
   def initialize(start_point:, end_point:)
