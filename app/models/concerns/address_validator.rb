@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddressValidator < ActiveModel::Validator
   def validate(record)
     if invalid_address?(record.start_point)
@@ -13,7 +15,8 @@ class AddressValidator < ActiveModel::Validator
   end
 
   private
-    def invalid_address?(address)
-      Geocoder.coordinates(address).nil?
-    end
+
+  def invalid_address?(address)
+    Geocoder.coordinates(address).nil?
+  end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe ActivitiesController, type: :controller do
@@ -14,8 +16,8 @@ RSpec.describe ActivitiesController, type: :controller do
   let(:activity) { FactoryBot.create(:activity, user_id: user.id) }
   subject { activity }
 
-  describe "GET #new" do
-    it "returns http success" do
+  describe 'GET #new' do
+    it 'returns http success' do
       get :new
       expect(response).to have_http_status(:success)
     end
@@ -26,11 +28,13 @@ RSpec.describe ActivitiesController, type: :controller do
     end
   end
 
-  describe "GET #create" do
-    let(:action) { post :create, params: {
-                    start_point: 'Plac Europejski 2, Warszawa, Polska',
-                    end_point: 'Andersa 2, Warszawa, Polska'
-                    } }
+  describe 'GET #create' do
+    let(:action) do
+      post :create, params: {
+        start_point: 'Plac Europejski 2, Warszawa, Polska',
+        end_point: 'Andersa 2, Warszawa, Polska'
+      }
+    end
     context 'with valid attributes' do
       it 'create new activity' do
         expect { action }.to change { Activity.count }.by(1)
@@ -43,10 +47,12 @@ RSpec.describe ActivitiesController, type: :controller do
     end
 
     context 'with invalid attributes' do
-      let(:action) { post :create, params: {
-                      start_point: 'aaaaa, Warszawa, Polska',
-                      end_point: 'bbbbb, Warszawa, Polska'
-                      } }
+      let(:action) do
+        post :create, params: {
+          start_point: 'aaaaa, Warszawa, Polska',
+          end_point: 'bbbbb, Warszawa, Polska'
+        }
+      end
       it "doesn't create a new activity" do
         expect { action }.to_not change { Activity.count }
       end
@@ -58,14 +64,14 @@ RSpec.describe ActivitiesController, type: :controller do
     end
   end
 
-  describe "GET #show" do
+  describe 'GET #show' do
     let(:another_user) { FactoryBot.create(:user) }
 
     before :each do
       get :show, params: { id: activity.id }
     end
 
-    it "returns http success" do
+    it 'returns http success' do
       expect(response).to have_http_status(:success)
     end
 
@@ -85,5 +91,4 @@ RSpec.describe ActivitiesController, type: :controller do
       expect(assigns(:weekly_distance)).to eq(activity.distance * 2)
     end
   end
-
 end
