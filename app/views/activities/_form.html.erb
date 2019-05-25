@@ -1,0 +1,15 @@
+<%= simple_form_for @activity do |f| %>
+  <p>
+    <%= f.input :start_point, required: false,
+        placeholder: 'e.g. Plac Europejski 2, Warszawa, Polska',
+        hint: 'Use format: street, city, country'%>
+  </p>
+  <p>
+    <%= f.input :end_point, required: false,
+        placeholder: 'e.g. Andersa 2, Warszawa, Polska',
+        hint: 'Use format: street, city, country' %>
+  </p>
+  <p>
+    <%= f.button :submit, class: "submit" %>
+  </p>
+<% end %>
