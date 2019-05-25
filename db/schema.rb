@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 2019_05_24_143602) do
   enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
-    t.string "start_point"
-    t.string "end_point"
-    t.float "distance"
+    t.string "start_point", null: false
+    t.string "end_point", null: false
+    t.float "distance", null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
