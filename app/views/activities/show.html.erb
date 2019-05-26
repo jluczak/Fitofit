@@ -1,2 +1,7 @@
-<h1>Your last distance is: <%= @activity.distance %> km</h1>
-<h1>This week you fitofitted: <%= @weekly_distance %> km</h1>
+<h3>Your last distance is: <%= @activity.distance %> km</h3>
+<h3>This week you fitofitted: <%= @weekly_distance %> km</h3>
+
+<div class="buttons">
+  <%= button_to "Add new activity", root_path, class:'btn submit' %>
+  <%= button_to "Show statistics", statistics_path, class:'btn submit' %>
+</div>

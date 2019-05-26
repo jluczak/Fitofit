@@ -73,16 +73,28 @@
 }
 .submit {
   margin: auto;
-  background-color: gray;
+  background-color: #3338f3;
   color: white;
   display: block;
+  font-size: 20px;
 }
 
-h2 {
+h2, h3 {
   text-align: center;
   margin-top: 40px;
 }
 
 .alert-alert, .alert-notice {
   background-color: #eef95914;
+}
+
+.buttons {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.buttons * {
+  display: inline-block;
+  padding: 10px;
+  font-size: 20px;
 }
