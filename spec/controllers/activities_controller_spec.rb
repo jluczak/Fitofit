@@ -17,13 +17,15 @@ RSpec.describe ActivitiesController, type: :controller do
   subject { activity }
 
   describe 'GET #new' do
-    it 'returns http success' do
+    before :each do
       get :new
+    end
+
+    it 'returns http success' do
       expect(response).to have_http_status(:success)
     end
 
     it 'renders the :new view' do
-      get :new
       expect(response).to render_template(:new)
     end
   end
@@ -83,12 +85,26 @@ RSpec.describe ActivitiesController, type: :controller do
       expect(response).to render_template(:show)
     end
 
-    it 'displays the last distance' do
+    it 'calculates the last distance' do
       FactoryBot.create(:activity, user_id: user.id, created_at: 8.days.ago)
       FactoryBot.create(:activity, user_id: another_user.id)
       FactoryBot.create(:activity, user_id: user.id)
       get :show, params: { id: activity.id }
       expect(assigns(:weekly_distance)).to eq(activity.distance * 2)
+    end
+  end
+
+  describe 'GET #index' do
+    before :each do
+      get :index
+    end
+
+    it 'returns http success' do
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'renders the :index view' do
+      expect(response).to render_template(:index)
     end
   end
 end
