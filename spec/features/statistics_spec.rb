@@ -2,11 +2,16 @@ require 'rails_helper'
 
 feature 'Statistics' do
   include Devise::Test::IntegrationHelpers
-  scenario 'Displaying accurate statistics' do
+  scenario 'Displaying accurate statistics as logged in user' do
     given_i_am_logged_in
     and_there_are_some_activities
     when_i_visit_statistics
     then_statistics_should_display_my_activities
+  end
+
+  scenario 'Displaying accurate statistics as not logged in user' do
+    when_i_visit_statistics
+    then_i_am_redirected_to_sign_in
   end
 
   def given_i_am_logged_in
@@ -41,5 +46,9 @@ feature 'Statistics' do
 
   def and_should_only_display_this_month_activities
     expect(page).not_to have_content("26. July")
+  end
+
+  def then_i_am_redirected_to_sign_in
+    expect(page.current_path).to eq new_user_session_path
   end
 end
