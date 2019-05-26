@@ -20,26 +20,16 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find_by(id: params[:id])
-    @weekly_distance = calculate_weekly_distance
+    @weekly_distance = current_user.activities.weekly_distance
   end
 
   def index
-    @monthly_statistics = current_user
-                          .activities
-                          .group_by_month(:created_at, last: 1)
-                          .group_by_day(:created_at, format: '%d. %B')
-                          .sum(:distance)
+    @monthly_statistics = current_user.activities.monthly_statistics
   end
 
   private
 
   def activity_params
     params.require(:activity).permit(:start_point, :end_point)
-  end
-
-  def calculate_weekly_distance
-    current_user
-      .activities.where('created_at > ?', 7.days.ago)
-      .sum(:distance)
   end
 end
