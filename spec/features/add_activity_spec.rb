@@ -24,7 +24,7 @@ feature 'AddActivity' do
   end
 
   def when_i_visit_root_path
-    visit '/'
+    visit root_path
   end
 
   def and_i_add_activity
@@ -43,7 +43,8 @@ feature 'AddActivity' do
   end
 
   def and_the_activity_should_appear_in_my_statistics
-    visit statistics_path
+    click_button 'Show statistics'
+    expect(page.current_path).to eq statistics_path
     today_date = Date.today.strftime('%d. %B')
     expect(page).to have_content(today_date)
     expect(page).to have_content('2.75 km')
