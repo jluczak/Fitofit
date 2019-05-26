@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 feature 'AddActivity' do
@@ -42,9 +44,9 @@ feature 'AddActivity' do
 
   def and_the_activity_should_appear_in_my_statistics
     visit statistics_path
-    today_date = Date.today.strftime("%d. %B")
+    today_date = Date.today.strftime('%d. %B')
     expect(page).to have_content(today_date)
-    expect(page).to have_content("2.75 km")
+    expect(page).to have_content('2.75 km')
   end
 
   def then_i_am_redirected_to_sign_in

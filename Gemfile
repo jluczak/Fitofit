@@ -39,9 +39,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'geocoder'
+gem 'groupdate'
 gem 'rubocop', require: false
 gem 'simple_form'
-gem 'groupdate'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -60,9 +60,9 @@ group :development do
 end
 
 group :test do
+  gem 'capybara'
   gem 'rails-controller-testing'
   gem 'shoulda-matchers'
-  gem 'capybara'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
