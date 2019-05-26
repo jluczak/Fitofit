@@ -39,6 +39,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'geocoder'
+gem 'groupdate'
 gem 'rubocop', require: false
 gem 'simple_form'
 
@@ -59,6 +60,7 @@ group :development do
 end
 
 group :test do
+  gem 'capybara'
   gem 'rails-controller-testing'
   gem 'shoulda-matchers'
 end

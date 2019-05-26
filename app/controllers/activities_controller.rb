@@ -23,6 +23,14 @@ class ActivitiesController < ApplicationController
     @weekly_distance = calculate_weekly_distance
   end
 
+  def index
+    @monthly_statistics = current_user
+                          .activities
+                          .group_by_month(:created_at, last: 1)
+                          .group_by_day(:created_at, format: '%d. %B')
+                          .sum(:distance)
+  end
+
   private
 
   def activity_params
