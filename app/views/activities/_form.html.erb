@@ -1,3 +1,4 @@
+<h2>Add new Activity</h2>
 <%= simple_form_for @activity do |f| %>
   <p>
     <%= f.input :start_point, required: false,
@@ -13,3 +14,4 @@
     <%= f.button :submit, class: "submit" %>
   </p>
 <% end %>
+<p class="show-statistics"><%= link_to "or show my statistics", statistics_path %></p>
