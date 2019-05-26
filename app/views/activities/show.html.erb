@@ -1,4 +1,4 @@
-<h3>Your last distance is: <%= @activity.distance %> km</h3>
+<h3>Your last distance is: <%= @activity.distance rescue 0.0 %> km</h3>
 <h3>This week you fitofitted: <%= @weekly_distance %> km</h3>
 
 <div class="buttons">
