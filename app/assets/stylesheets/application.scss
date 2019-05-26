@@ -13,11 +13,19 @@
  */
  @import "bootstrap";
 
+ body {
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-size: cover;
+   background-color: #fafafa;
+ }
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  list-style: none
+  list-style: none;
+  background-color: white;
 }
  .logo a img {
    max-width: 60%;
@@ -56,4 +64,25 @@
   font-size: 50px;
   color: white;
   width: 100%;
+}
+.form {
+  width:40%;
+  text-align: left;
+  margin: auto;
+  font-weight: bold;
+}
+.submit {
+  margin: auto;
+  background-color: gray;
+  color: white;
+  display: block;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.alert-alert, .alert-notice {
+  background-color: #eef95914;
 }
