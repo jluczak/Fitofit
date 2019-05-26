@@ -1,12 +1,17 @@
-<table>
-  <tr>
-    <td> Day </td>
-    <td> Distance </td>
-  </tr>
-  <% @monthly_statistics.each do |day| %>
+<h2>Your monthly statistics</h2>
+<table class="statistics table table-striped">
+  <thead>
     <tr>
-      <td> <%= day.first.last %> </td>
-      <td> <%= day.last %> km </td>
+      <td> Day </td>
+      <td> Distance </td>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <% @monthly_statistics.each do |day| %>
+      <tr>
+        <td> <%= day.first.last %> </td>
+        <td> <%= day.last %> km </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>

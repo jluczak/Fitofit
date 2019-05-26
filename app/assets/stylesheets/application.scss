@@ -81,7 +81,7 @@
 
 h2, h3 {
   text-align: center;
-  margin-top: 40px;
+  margin: 40px;
 }
 
 .alert-alert, .alert-notice {
@@ -105,3 +105,15 @@ h2, h3 {
     color: #3338f3;
     text-align: center;
   } }
+
+.statistics {
+  font-size: 20px;
+  width: 50%;
+  margin: auto;
+  td {
+    padding: 20px;
+  }
+  thead {
+    font-weight: bold;
+  }
+}
