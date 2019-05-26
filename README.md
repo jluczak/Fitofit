@@ -1,6 +1,8 @@
 # Fitofit
 Walk around the world with Fitofit! You can use this app to register your daily activities.
 
+Check it out [HERE](https://fitofit-app.herokuapp.com/)
+
 ## Configuration
 - Ruby version: 2.6.2
 - Rails version: 5.2.3
