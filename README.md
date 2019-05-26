@@ -1,24 +1,18 @@
-# README
+# Fitofit
+Walk around the world with Fitofit! You can use this app to register your daily activities.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##Configuration
+Ruby version: 2.6.2
+Rails version: 5.2.3
+Database: PostgreSQL
 
-Things you may want to cover:
+##Used gems
+- features: geocoder, devise, groupdate
+- tests: factory_bot_rails, rspec, capybara, shoulda-matchers
+- others: bootstrap, rubocop
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##Instalation
+```
+bundle install
+rails db:migrate RAILS_ENV=development
+```
