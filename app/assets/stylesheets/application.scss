@@ -17,7 +17,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 10px;
   list-style: none
 }
  .logo a img {
@@ -43,3 +42,18 @@
     text-decoration: none;
     color: rgba(0,0,0,.54);
   }
+  .header {
+   background-color: #43e05a;
+   padding: 100px;
+   border-top-width: 1px;
+   border-top-style: solid;
+   border-top-color: #e2dede;
+  }
+
+  .app-title {
+  font-family: helvetica, sans-serif;
+  text-align: center;
+  font-size: 50px;
+  color: white;
+  width: 100%;
+}

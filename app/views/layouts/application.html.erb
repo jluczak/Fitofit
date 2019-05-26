@@ -11,6 +11,7 @@
 
   <body>
     <%= render partial: 'layouts/navbar'%>
+    <%= render partial: 'layouts/header'%>
     <% flash.each do |name,msg| %>
       <% next if name.to_s == 'timedout' %>
       <div class="alert alert-<%= name %>">
