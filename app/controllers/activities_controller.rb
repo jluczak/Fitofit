@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ActivitiesController < ApplicationController
+  before_action :find_activity, only: %i[show destroy]
   before_action :authenticate_user!
 
   def new
@@ -19,7 +20,6 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    @activity = Activity.find_by(id: params[:id])
     @weekly_distance = current_user.activities.weekly_distance
   end
 
@@ -27,9 +27,19 @@ class ActivitiesController < ApplicationController
     @monthly_statistics = current_user.activities.monthly_statistics
   end
 
+  def destroy
+    @activity.destroy
+    flash[:success] = 'Activity deleted'
+    redirect_to root_path
+  end
+
   private
 
   def activity_params
     params.require(:activity).permit(:start_point, :end_point)
+  end
+
+  def find_activity
+    @activity = Activity.find(params[:id])
   end
 end

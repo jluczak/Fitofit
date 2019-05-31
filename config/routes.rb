@@ -3,6 +3,6 @@
 Rails.application.routes.draw do
   root to: 'activities#new'
   get '/statistics', to: 'activities#index'
-  resources :activities, only: %i[new create show]
+  resources :activities, only: %i[new create show destroy]
   devise_for :users
 end

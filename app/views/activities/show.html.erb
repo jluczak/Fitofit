@@ -4,4 +4,7 @@
 <div class="buttons">
   <%= button_to "Add new activity", root_path, :method => :get, class:'btn submit' %>
   <%= button_to "Show statistics", statistics_path, :method => :get, class:'btn submit' %>
+  <%= button_to 'Destroy activity', activity_path(@activity),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %>
 </div>
